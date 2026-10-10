@@ -70,8 +70,13 @@
   transition: 0.2s;
 }
 
-.cta:hover {
+.cta:hover,
+.navigation .cta:hover {
   background: #dbb862;
+  color: #16120a;
+}
+
+.navigation .cta:visited {
   color: #16120a;
 }
 

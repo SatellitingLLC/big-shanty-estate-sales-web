@@ -28,7 +28,7 @@ export async function submitContactForm(form: HTMLFormElement, event: { preventD
         ...Object.fromEntries(data),
         access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
         subject: `Inquiry: ${topic} - ${name}`,
-        from_name: "Big Shanty Auction Website",
+        from_name: "Big Shanty Estate Sales Website",
         botcheck: data.get("website") ? "1" : "",
       }),
     });

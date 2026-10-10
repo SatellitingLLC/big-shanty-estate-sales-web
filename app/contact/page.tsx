@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
-import { SocialLinks } from "@/components/site/SocialLinks";
+import { SiteIcon } from "@/components/site/SiteIcon";
 import { LandingPageRenderer } from "@/components/site/LandingPageRenderer";
 import { getPublishedPage } from "@/lib/page-store";
 import { connection } from "next/server";
@@ -13,20 +13,38 @@ import { ContactForm } from "./ContactForm";
 const siteUrl = getSiteUrl();
 const canonical = siteUrl ? new URL("/contact", siteUrl).href : undefined;
 const description =
-  "Contact Big Shanty Auction in Marietta, Georgia about consigning, bidding, antiques, or estate sales.";
+  "Contact Big Shanty Estate Sales in the Atlanta area. Request a free walk-through for an estate sale, downsizing, liquidation, or auction.";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Big Shanty Auction",
+  title: "Contact | Big Shanty Estate Sales",
   description,
   alternates: canonical ? { canonical } : undefined,
   openGraph: {
-    title: "Contact Us | Big Shanty Auction",
+    title: "Contact | Big Shanty Estate Sales",
     description,
     type: "website",
-    siteName: "Big Shanty Auction",
+    siteName: "Big Shanty Estate Sales",
     ...(canonical ? { url: canonical } : {}),
   },
 };
+
+const steps = [
+  {
+    numeral: "I",
+    title: "We reply",
+    text: "We read your note and get back to you to talk through the home and your timeline.",
+  },
+  {
+    numeral: "II",
+    title: "We walk the house",
+    text: "A free walk-through to see what is there and decide the best way to sell it.",
+  },
+  {
+    numeral: "III",
+    title: "We run the sale",
+    text: "We sort, price, stage and sell, and keep you updated along the way.",
+  },
+];
 
 export default async function ContactPage() {
   await connection();
@@ -48,101 +66,108 @@ export default async function ContactPage() {
 
       <main>
         <header className={styles.hero} aria-labelledby="contact-title">
-          <p className={styles.eyebrow}>Contact</p>
-          <h1 id="contact-title">
-            Going Once. Going Twice. <em>Say Hello.</em>
-          </h1>
-          <p className={styles.heroText}>
-            Consigning an estate, asking about a lot, or just curious what’s on the block?
-            We’d love to hear from you.
-          </p>
+          <div className={styles.wrap}>
+            <span className={styles.eyebrow}>Contact</span>
+            <h1 id="contact-title">
+              Let&rsquo;s open the <i>door.</i>
+            </h1>
+            <p className={styles.heroText}>
+              Tell us about the home, the timeline and what you need. A real person from our
+              team will get back to you.
+            </p>
+            <svg className={styles.key} viewBox="0 0 400 90" aria-hidden="true">
+              <defs>
+                <linearGradient id="contact-key-gold" x1="0" x2="1">
+                  <stop offset="0" stopColor="#f7e7a6" />
+                  <stop offset="1" stopColor="#b8923a" />
+                </linearGradient>
+              </defs>
+              <g className={styles.draw}>
+                <ellipse cx="62" cy="45" rx="44" ry="38" />
+                <ellipse cx="62" cy="45" rx="30" ry="25" />
+                <circle cx="62" cy="45" r="9" />
+                <path d="M106 45H372V70H350V58H336V70H318V58H300V70H282V45" />
+                <path d="M130 38v14M140 38v14" />
+              </g>
+            </svg>
+          </div>
         </header>
 
-        <section className={styles.contactSection} aria-label="Contact Big Shanty Auction">
-          <div className={styles.ticket}>
-            <div className={styles.ticketHeader}>
-              <strong>Big Shanty Auction</strong>
-              <span>Lot No. <em>2932</em></span>
+        <div className={styles.main}>
+          <div className={`${styles.wrap} ${styles.grid}`}>
+            <div>
+              <span className={`${styles.eyebrow} ${styles.blue}`}>Reach Us</span>
+              <h2>Every sale starts with a conversation</h2>
+              <div className={styles.rule} />
+              <p className={styles.lead}>
+                Whether you are settling an estate, downsizing, or just curious what a
+                collection might bring, the first walk-through is where we begin.
+              </p>
+              <div className={styles.info}>
+                <div className={styles.row}>
+                  <div className={styles.ico}>
+                    <SiteIcon name="phone" />
+                  </div>
+                  <div>
+                    <h3>Phone</h3>
+                    <p>
+                      <a href="tel:4702268003">(470) 226-8003</a>
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.row}>
+                  <div className={styles.ico}>
+                    <SiteIcon name="location" />
+                  </div>
+                  <div>
+                    <h3>Service area</h3>
+                    <p>Atlanta and the surrounding Georgia communities, including Cobb County.</p>
+                  </div>
+                </div>
+                <div className={styles.row}>
+                  <div className={styles.ico}>
+                    <SiteIcon name="handshake" />
+                  </div>
+                  <div>
+                    <h3>Sister companies</h3>
+                    <p>
+                      <a href="https://bigshantyauction.com" target="_blank" rel="noopener noreferrer">
+                        Big Shanty Auction
+                      </a>{" "}
+                      &amp;{" "}
+                      <a
+                        href="https://bigshantyantique.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Big Shanty Antiques
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className={styles.perforation} aria-hidden="true" />
+
             <ContactForm />
           </div>
+        </div>
 
-          <aside className={styles.detailsColumn} aria-label="Visit or call us">
-            <section className={styles.detailCard}>
-              <p className={styles.eyebrow}>Come On In</p>
-              <h2>Visit the <em>Auction House</em></h2>
-              <address>
-                2932 Canton Rd, Suite 110
-                <br />
-                Marietta, GA 30066
-              </address>
-              <a
-                className={styles.textLink}
-                href="https://www.google.com/maps/search/?api=1&query=2932+Canton+Rd+Suite+110+Marietta+GA+30066"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Get directions <span aria-hidden="true">↗</span>
-              </a>
-            </section>
-
-            <section className={styles.detailCard}>
-              <p className={styles.eyebrow}>Call or Email</p>
-              <h2>We’re Easy to <em>Reach</em></h2>
-              <a className={styles.detailLink} href="tel:4702268003">
-                (470) 226-8003
-              </a>
-              <a className={styles.detailLink} href="mailto:dwaynesantiques@gmail.com">
-                dwaynesantiques@gmail.com
-              </a>
-            </section>
-
-            <section className={styles.detailCard}>
-              <p className={styles.eyebrow}>Store Hours</p>
-              <h2>Stop By <em>Any Day</em></h2>
-              <dl className={styles.hours}>
-                <div><dt>Monday–Saturday</dt><dd>10 a.m.–6 p.m.</dd></div>
-                <div><dt>Sunday</dt><dd>Noon–6 p.m.</dd></div>
-              </dl>
-              <p className={styles.hoursNote}>Hours can change; please call ahead to confirm.</p>
-            </section>
-
-            <section className={`${styles.detailCard} ${styles.socialCard}`}>
-              <p className={styles.eyebrow}>Follow Along</p>
-              <h2>Find us <em>around town.</em></h2>
-              <p className={styles.socialText}>
-                Follow the latest finds, auction updates, and the latest Big Shanty updates.
-              </p>
-              <SocialLinks />
-            </section>
-          </aside>
-        </section>
-
-        <section className={styles.bidderSection} aria-labelledby="bidder-title">
-          <div>
-            <p className={styles.eyebrow}>New to Our Auctions?</p>
-            <h2 id="bidder-title">A few helpful things to <em>know.</em></h2>
-          </div>
-          <div className={styles.bidderInfo}>
-            <p>Our auctions are held online through HiBid, and bidder registration is free.</p>
-            <p>Payment is due within three days after the auction closes. Items must be picked up within ten days.</p>
-            <a
-              className={styles.bidLink}
-              href="https://bigshantyauction.hibid.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Browse auctions on HiBid <span aria-hidden="true">↗</span>
-            </a>
-            <a
-              className={styles.bidLink}
-              href="https://www.liveauctioneers.com/auctioneer/5785/bramlett-and-co/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Browse auctions on LiveAuctioneers <span aria-hidden="true">↗</span>
-            </a>
+        <section className={styles.steps} aria-labelledby="steps-title">
+          <div className={styles.wrap}>
+            <div className={styles.stepsHead}>
+              <span className={styles.eyebrow}>What Happens Next</span>
+              <h2 id="steps-title">From first call to final count</h2>
+              <div className={styles.rule} />
+            </div>
+            <div className={styles.stepGrid}>
+              {steps.map((step) => (
+                <div className={styles.step} key={step.numeral}>
+                  <b aria-hidden="true">{step.numeral}</b>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>

@@ -1,8 +1,8 @@
 import fs from "node:fs";
-const p = "C:\\Users\\Satelliting\\Downloads\\Contact _ Big Shanty Estate Sales.html";
+const p = "C:\\Users\\Satelliting\\Downloads\\About _ Big Shanty Estate Sales.html";
 const raw = fs.readFileSync(p, "utf8");
 const cleaned = raw.replace(/data:image\/[^"']+/g, "DATA_IMAGE");
-fs.writeFileSync("C:\\Users\\Satelliting\\AppData\\Local\\Temp\\opencode\\contact-cleaned.html", cleaned);
+fs.writeFileSync("C:\\Users\\Satelliting\\AppData\\Local\\Temp\\opencode\\about-cleaned.html", cleaned);
 const style = (cleaned.match(/<style>([\s\S]*?)<\/style>/) || [])[1] || "no style";
 const body = (cleaned.match(/<body>([\s\S]*?)<\/body>/) || [])[1] || "no body";
 console.log("=== STYLE ===");

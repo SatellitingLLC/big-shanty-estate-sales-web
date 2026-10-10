@@ -2,19 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import styles from "./SiteHeader.module.css";
-
-const links = [
-  { href: "#top", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#contact", label: "Contact" },
-];
 
 export function SiteHeader({ currentPage }: { currentPage?: "Home" | "About" | "Team" | "Contact" }) {
   const headerRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const onHome = usePathname() === "/";
+  const anchor = (hash: string) => (onHome ? hash : `/${hash}`);
+  const links = [
+    { href: "/", label: "Home" },
+    { href: anchor("#about"), label: "About" },
+    { href: anchor("#services"), label: "Services" },
+    { href: "/contact", label: "Contact" },
+  ];
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -39,7 +41,7 @@ export function SiteHeader({ currentPage }: { currentPage?: "Home" | "About" | "
   return (
     <header className={styles.header} ref={headerRef}>
       <div className={styles.inner}>
-        <Link className={styles.brand} href="#top" aria-label="Big Shanty Estate Sales home">
+        <Link className={styles.brand} href="/" aria-label="Big Shanty Estate Sales home">
           <strong>Big Shanty</strong>
           <small>Estate Sales</small>
         </Link>

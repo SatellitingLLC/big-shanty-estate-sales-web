@@ -10,7 +10,7 @@ export function SiteFooter() {
       <div className={styles.wrap}>
         <div className={styles.grid}>
           <div>
-            <Link href="#top" aria-label="Big Shanty Estate Sales home">
+            <Link href="/" aria-label="Big Shanty Estate Sales home">
               <Image
                 src="/assets/estate-logo.png"
                 width={520}
@@ -30,9 +30,9 @@ export function SiteFooter() {
           </div>
           <div>
             <h2>Quick Menu</h2>
-            <Link href="#top">Home</Link>
+            <Link href="/">Home</Link>
             <Link href="#about">About</Link>
-            <Link href="#contact">Contact</Link>
+            <Link href="/contact">Contact</Link>
           </div>
           <div>
             <h2>Our Companies</h2>
