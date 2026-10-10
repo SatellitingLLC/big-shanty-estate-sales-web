@@ -90,8 +90,8 @@ export default async function ContactPage() {
             <section className={styles.detailCard}>
               <p className={styles.eyebrow}>Call or Email</p>
               <h2>We’re Easy to <em>Reach</em></h2>
-              <a className={styles.detailLink} href="tel:7702312019">
-                (770) 231-2019
+              <a className={styles.detailLink} href="tel:4702268003">
+                (470) 226-8003
               </a>
               <a className={styles.detailLink} href="mailto:dwaynesantiques@gmail.com">
                 dwaynesantiques@gmail.com

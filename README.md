@@ -1,6 +1,15 @@
 # Big Shanty Estate Sales
 
-Welcome to the Big Shanty Estate Sales site: the public-facing auction page, plus a private backstage area where an admin can edit it without wrestling raw HTML. GrapesJS does the dragging; you keep the junk.
+Welcome to the Big Shanty Estate Sales site: the public-facing estate sale page, plus a private backstage area where an admin can edit it without wrestling raw HTML. GrapesJS does the dragging; you keep the junk.
+
+## The home page
+
+Single-page home (`/`) built from reusable chrome plus GrapesJS-editable content:
+
+- `components/site/SiteHeader.tsx` — sticky navy header, brand, Home/About/Services/Contact anchors, gold `Upcoming Estates` button.
+- `components/site/SiteFooter.tsx` — navy footer with About, Quick Menu, Our Companies, and the Satelliting credit.
+- Editable landing content from `lib/page-seed.json` — hero (`#top`), services (`#services`, 4 columns), trust/about split (`#about`), and CTA (`#contact`, `mailto:hello@bigshantyestatesales.com`).
+- Header/footer live outside the editor; the editor only saves the hero/services/about/CTA markup so site chrome can't be duplicated or deleted.
 
 ## Start the site
 
@@ -48,14 +57,14 @@ Visit `/` for the home page, `/login` to sign in, and `/admin/editor` to edit th
 
 Drafts and published page snapshots for Home, About, Team, and Contact are written to `.data/pages.json`. Saves survive a normal restart as long as that file and its disk survive too. This is local, single-instance storage—not a cloud backup, and not a good fit for serverless or multi-instance hosting. Before deploying somewhere like that, move the page data to durable shared storage.
 
-The original page content is seeded from `lib/page-seed.json`; its image lives at `public/assets/auction-photo.png`. There’s no image-upload feature yet, so use stable assets already served from `public`.
+The original page content is seeded from `lib/page-seed.json`; its images live in `public/assets/` (`estate-logo.png`, `hero-bg.jpg`, `about-photo.jpg`). There’s no image-upload feature yet, so use stable assets already served from `public`.
 
 ## A few safety rails
 
 - Admin access is configured through environment variables; there are no built-in default credentials.
 - Login uses a server-side scrypt password hash and an HTTP-only, HMAC-signed session cookie that expires after 12 hours.
 - Public rendering removes scripts and unsafe markup, and keeps saved CSS scoped to the landing page so an edit doesn’t accidentally redecorate the whole app.
-- Search crawlers can index the public auction page; admin and login routes are marked no-index. The home page includes local-business structured data, social-share metadata, and a sitemap/robots setup. Set `SITE_URL` to the real production origin, then submit `/sitemap.xml` in Google Search Console—crawlers are good, but they still appreciate directions.
+- Search crawlers can index the public estate sale page; admin and login routes are marked no-index. The home page includes local-business structured data, social-share metadata, and a sitemap/robots setup. Set `SITE_URL` to the real production origin, then submit `/sitemap.xml` in Google Search Console—crawlers are good, but they still appreciate directions.
 
 ## Handy commands
 

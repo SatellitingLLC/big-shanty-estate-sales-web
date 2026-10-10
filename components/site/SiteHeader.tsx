@@ -70,9 +70,15 @@ export function SiteHeader({ currentPage }: { currentPage?: "Home" | "About" | "
               {label}
             </Link>
           ))}
-          <Link className={styles.cta} href="#contact" onClick={() => setMenuOpen(false)}>
+          <a
+            className={styles.cta}
+            href="https://www.estatesales.net/companies/GA/Marietta/30066/26564"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+          >
             Upcoming Estates
-          </Link>
+          </a>
         </nav>
       </div>
     </header>

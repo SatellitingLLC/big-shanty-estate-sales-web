@@ -124,8 +124,8 @@ export default async function TeamPage() {
             <a className={styles.primaryButton} href="/contact">
               Contact Us
             </a>
-            <a className={styles.button} href="tel:7702312019">
-              Call (770) 231-2019
+            <a className={styles.button} href="tel:4702268003">
+              Call (470) 226-8003
             </a>
           </div>
         </section>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { SocialLinks } from "./SocialLinks";
 import styles from "./SiteFooter.module.css";
 
 export function SiteFooter() {
@@ -25,9 +26,7 @@ export function SiteFooter() {
               knowledgeable women in the business. We sit alongside Big Shanty Auction and Big
               Shanty Antiques.
             </p>
-            <Link className={styles.button} href="#about">
-              Our Story
-            </Link>
+            <SocialLinks />
           </div>
           <div>
             <h2>Quick Menu</h2>
@@ -37,11 +36,13 @@ export function SiteFooter() {
           </div>
           <div>
             <h2>Our Companies</h2>
-            <Link href="#top">Big Shanty Estate Sales</Link>
-            <a href="https://www.bigshantyauction.com" target="_blank" rel="noopener noreferrer">
+            <Link href="/">Big Shanty Estate Sales</Link>
+            <a href="https://bigshantyauction.com" target="_blank" rel="noopener noreferrer">
               Big Shanty Auction
             </a>
-            <Link href="#top">Big Shanty Antiques</Link>
+            <a href="https://bigshantyantique.com" target="_blank" rel="noopener noreferrer">
+              Big Shanty Antiques
+            </a>
           </div>
         </div>
         <div className={styles.copy}>
