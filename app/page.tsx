@@ -10,7 +10,7 @@ import { getSiteUrl } from "@/lib/site-url";
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPublishedPage("home");
   const siteUrl = getSiteUrl();
-  const logoUrl = siteUrl ? new URL("/assets/auction-photo.png", siteUrl).href : undefined;
+  const logoUrl = siteUrl ? new URL("/assets/estate-logo.png", siteUrl).href : undefined;
   return {
     title: page.title,
     description: page.description,
@@ -19,16 +19,16 @@ export async function generateMetadata(): Promise<Metadata> {
       title: page.title,
       description: page.description,
       type: "website",
-      siteName: "Big Shanty Auction",
+      siteName: "Big Shanty Estate Sales",
       ...(siteUrl ? { url: siteUrl.href } : {}),
       ...(logoUrl
         ? {
             images: [
               {
                 url: logoUrl,
-                width: 640,
-                height: 426,
-                alt: "Big Shanty Auction logo",
+                width: 900,
+                height: 512,
+                alt: "Big Shanty Estate Sales logo",
               },
             ],
           }
@@ -50,23 +50,20 @@ export default async function HomePage() {
   const business = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Big Shanty Auction",
+    name: "Big Shanty Estate Sales",
     description: page.description,
-    telephone: "+1-770-231-2019",
-    email: "dwaynesantiques@gmail.com",
+    email: "hello@bigshantyestatesales.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "2932 Canton Rd",
-      addressLocality: "Marietta",
+      addressLocality: "Atlanta",
       addressRegion: "GA",
-      postalCode: "30066",
       addressCountry: "US",
     },
     ...(siteUrl
       ? {
           "@id": new URL("/#business", siteUrl).href,
           url: siteUrl.href,
-          image: new URL("/assets/auction-photo.png", siteUrl).href,
+          image: new URL("/assets/estate-logo.png", siteUrl).href,
         }
       : {}),
   };

@@ -98,7 +98,7 @@ function sanitizeMarkup(markup: string) {
       text: ["x", "y", "font-family", "font-size", "text-anchor", "fill", "stroke"],
     },
     allowedSchemes: ["http", "https", "mailto", "tel"],
-    exclusiveFilter: (frame) => frame.tag === "nav" || frame.tag === "footer",
+    exclusiveFilter: (frame) => frame.tag === "header" || frame.tag === "nav" || frame.tag === "footer",
     transformTags: {
       a: (tagName, attribs) => ({
         tagName,

@@ -10,7 +10,7 @@ import type { PageDocument } from "@/lib/page-seed";
 
 function removeSharedChrome(markup: string) {
   const document = new DOMParser().parseFromString(markup, "text/html");
-  document.querySelectorAll("nav, footer").forEach((element) => element.remove());
+  document.querySelectorAll("header, nav, footer").forEach((element) => element.remove());
   return document.body.innerHTML;
 }
 
@@ -164,7 +164,7 @@ export function LandingPageEditor({ page }: { page: PageDocument }) {
           fromElement: false,
           canvas: {
             styles: [
-              "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500&display=swap",
+              "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@400;700&display=swap",
               "/api/editor-base-css",
             ],
           },

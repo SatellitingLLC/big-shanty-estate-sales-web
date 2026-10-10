@@ -1,48 +1,61 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { SocialLinks } from "./SocialLinks";
 import styles from "./SiteFooter.module.css";
 
 export function SiteFooter() {
   return (
-    <footer className={styles.footer} id="contact">
-      <div className={styles.grid}>
-        <div>
-          <Link href="/" aria-label="Big Shanty Auction home">
-            <Image
-              src="/assets/auction-photo.png"
-              width={600}
-              height={393}
-              alt="Big Shanty Auction"
-            />
-          </Link>
-          <p>Family owned and operated in Marietta, Georgia.</p>
+    <footer className={styles.footer}>
+      <div className={styles.wrap}>
+        <div className={styles.grid}>
+          <div>
+            <Link href="#top" aria-label="Big Shanty Estate Sales home">
+              <Image
+                src="/assets/estate-logo.png"
+                width={520}
+                height={296}
+                alt="Big Shanty Estate Sales"
+              />
+            </Link>
+          </div>
+          <div>
+            <h2>About</h2>
+            <p>
+              Big Shanty Estate Sales is a Georgia estate sale company run by two of the most
+              knowledgeable women in the business. We sit alongside Big Shanty Auction and Big
+              Shanty Antiques.
+            </p>
+            <Link className={styles.button} href="#about">
+              Our Story
+            </Link>
+          </div>
+          <div>
+            <h2>Quick Menu</h2>
+            <Link href="#top">Home</Link>
+            <Link href="#about">About</Link>
+            <Link href="#contact">Contact</Link>
+          </div>
+          <div>
+            <h2>Our Companies</h2>
+            <Link href="#top">Big Shanty Estate Sales</Link>
+            <a href="https://www.bigshantyauction.com" target="_blank" rel="noopener noreferrer">
+              Big Shanty Auction
+            </a>
+            <Link href="#top">Big Shanty Antiques</Link>
+          </div>
         </div>
-        <div>
-          <h2>Company</h2>
-          <Link href="/about">About Us</Link>
-          <Link href="/#services">Services</Link>
-          <Link href="/team">Our Team</Link>
-          <Link href="/contact">Contact</Link>
+        <div className={styles.copy}>
+          <span>Copyright © 2026 Big Shanty Estate Sales. All rights reserved.</span>
+          <span className={styles.divider} aria-hidden="true">
+            |
+          </span>
+          <span>
+            Designed by{" "}
+            <a href="https://satelliting.space" target="_blank" rel="noopener">
+              Satelliting LLC
+            </a>
+          </span>
         </div>
-        <div>
-          <h2>Services</h2>
-          <a href="https://bigshantyauction.com" target="_blank" rel="noopener noreferrer">Auctions</a>
-          <a href="https://bigshantyestatesales.com" target="_blank" rel="noopener noreferrer">Estate Sales</a>
-          <a href="https://bigshantyantique.com" target="_blank" rel="noopener noreferrer">Antique Mall</a>
-        </div>
-        <div>
-          <h2>Get in Touch</h2>
-          <p>2932 Canton Rd<br />Marietta, GA 30066</p>
-          <a href="mailto:dwaynesantiques@gmail.com">dwaynesantiques@gmail.com</a>
-          <a href="tel:7702312019">(770) 231-2019</a>
-          <SocialLinks />
-        </div>
-      </div>
-      <div className={styles.finePrint}>
-        <span>© Big Shanty Auction · Auctioneer ID #34044 · License AU003986</span>
-        <span>Designed by <a href="https://satelliting.space/">Satelliting LLC</a></span>
       </div>
     </footer>
   );

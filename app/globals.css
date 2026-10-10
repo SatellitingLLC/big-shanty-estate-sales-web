@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0a09;
-  --foreground: #ece5d6;
+  --background: #f7f4ed;
+  --foreground: #1b2230;
+  --navy: #080c14;
+  --navy2: #0f1623;
+  --blue: #0a63c4;
+  --gold: #c9a24b;
+  --ivory: #f7f4ed;
+  --ink: #1b2230;
+  --mute: #5d6572;
 }
 
 html {
@@ -18,7 +25,12 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-jost, "Jost"), Arial, Helvetica, sans-serif;
+  font-family: var(--font-lato, "Lato"), Arial, Helvetica, sans-serif;
+}
+
+.home-shell {
+  background: var(--ivory);
+  color: var(--ink);
 }
 
 button,
@@ -45,7 +57,7 @@ input {
 .login-header h1 {
   margin: 12px 0 24px;
   font-size: clamp(2.2rem, 4vw, 3rem);
-  font-family: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif;
+  font-family: var(--font-playfair, "Playfair Display"), Georgia, serif;
   font-weight: 500;
 }
 
@@ -156,7 +168,7 @@ input {
 .editor-toolbar h1 {
   margin: 0;
   font-size: clamp(1.8rem, 2vw, 2.6rem);
-  font-family: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif;
+  font-family: var(--font-playfair, "Playfair Display"), Georgia, serif;
   font-weight: 500;
 }
 
@@ -210,7 +222,7 @@ input {
 .admin-panel h2 {
   margin: 0 0 10px;
   font-size: clamp(2.4rem, 5vw, 3.5rem);
-  font-family: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif;
+  font-family: var(--font-playfair, "Playfair Display"), Georgia, serif;
   font-weight: 500;
 }
 

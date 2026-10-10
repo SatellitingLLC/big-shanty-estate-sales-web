@@ -1,6 +1,6 @@
-# Big Shanty Auction
+# Big Shanty Estate Sales
 
-Welcome to the Big Shanty Auction site: the public-facing auction page, plus a private backstage area where an admin can edit it without wrestling raw HTML. GrapesJS does the dragging; you keep the gavel.
+Welcome to the Big Shanty Estate Sales site: the public-facing auction page, plus a private backstage area where an admin can edit it without wrestling raw HTML. GrapesJS does the dragging; you keep the junk.
 
 ## Start the site
 
@@ -42,7 +42,7 @@ pnpm install
 pnpm dev
 ```
 
-Visit `/` for the auction page, `/login` to sign in, and `/admin/editor` to edit the home page. The editor links let you switch between Home, About, Team, and Contact. **Save Draft** saves your work for later without changing the public page; **Publish** sends it live. The internet does not get to see your half-finished masterpiece.
+Visit `/` for the home page, `/login` to sign in, and `/admin/editor` to edit the home page. The editor links let you switch between Home, About, Team, and Contact. **Save Draft** saves your work for later without changing the public page; **Publish** sends it live. The internet does not get to see your half-finished masterpiece.
 
 ## What gets saved
 
