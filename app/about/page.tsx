@@ -1,62 +1,105 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { LandingPageRenderer } from "@/components/site/LandingPageRenderer";
 import { getPublishedPage } from "@/lib/page-store";
-import { getSiteUrl } from "@/lib/site-url";
 import { connection } from "next/server";
+import { getSiteUrl } from "@/lib/site-url";
 import styles from "./page.module.css";
-
-const chapters = [
-  {
-    chapter: "Chapter I",
-    title: "The Backroom",
-    description: "A small auction company takes root in the back of a big antique mall.",
-  },
-  {
-    chapter: "Chapter II",
-    title: "A Following",
-    description: "People from all walks of life gather for the auctions and stay for the company.",
-  },
-  {
-    chapter: "Chapter III",
-    title: "Room to Grow",
-    description:
-      "A 5,000+ sq ft space built for auctions, alongside a 5,000+ sq ft warehouse for future sales.",
-  },
-  {
-    chapter: "Chapter IV",
-    title: "Today",
-    description:
-      "An antique mall, monthly auctions featuring 500+ items, and several estate sales each month.",
-  },
-];
-
-const facts = [
-  { value: "5,000+", label: "Sq Ft Auction Space" },
-  { value: "5,000+", label: "Sq Ft Warehouse" },
-  { value: "500+", label: "Items Per Monthly Auction" },
-  { value: "3", label: "Ways We Serve You" },
-];
 
 const siteUrl = getSiteUrl();
 const description =
-  "Learn how Big Shanty Auction grew from a backroom auction into a Marietta, Georgia destination for antiques, monthly auctions, and estate sales.";
+  "Meet the team behind Big Shanty Estate Sales: two Georgia estate sale specialists serving the Atlanta area with honest pricing and full-service sales.";
 const canonical = siteUrl ? new URL("/about", siteUrl).href : undefined;
 
 export const metadata: Metadata = {
-  title: "About Us | Big Shanty Auction",
+  title: "About Us | Big Shanty Estate Sales",
   description,
   alternates: canonical ? { canonical } : undefined,
   openGraph: {
-    title: "About Us | Big Shanty Auction",
+    title: "About Us | Big Shanty Estate Sales",
     description,
     type: "website",
-    siteName: "Big Shanty Auction",
+    siteName: "Big Shanty Estate Sales",
     ...(canonical ? { url: canonical } : {}),
   },
 };
+
+const tags = [
+  {
+    no: "Tag No. 1",
+    title: "Estate Sales",
+    text: "Full-service, in-home sales. We price, stage and run every day of the sale.",
+    price: "Our flagship",
+  },
+  {
+    no: "Tag No. 2",
+    title: "Big Shanty Auction",
+    text: "For pieces that deserve a bidding room and a wider audience.",
+    price: "Going once…",
+    href: "https://bigshantyauction.com",
+  },
+  {
+    no: "Tag No. 3",
+    title: "Big Shanty Antiques",
+    text: "Where select finds are curated and offered to collectors and decorators.",
+    price: "Always something new",
+    href: "https://bigshantyantique.com",
+  },
+];
+
+const principles = [
+  {
+    numeral: "I",
+    title: "Look closely",
+    text: "We go through everything, from the attic to the china cabinet, because value hides in the details.",
+  },
+  {
+    numeral: "II",
+    title: "Price honestly",
+    text: "Research drives every price tag. Fair numbers bring serious buyers and better results for your family.",
+  },
+  {
+    numeral: "III",
+    title: "Sell widely",
+    text: "Our buyers hear about a sale before the doors open, so the right people show up.",
+  },
+  {
+    numeral: "IV",
+    title: "Respect the home",
+    text: "We know why these sales happen. We work with sensitivity, keep you informed, and leave the house in good order.",
+  },
+];
+
+const team = [
+  {
+    no: "Lot No. 1",
+    name: "Dana Worley",
+    role: "Co-Owner & Estate Specialist",
+    photo: "/assets/dana-worley.jpg",
+    bio: "Dana leads pricing and research, with a trained eye for antiques, collectibles, and the pieces that deserve a second look.",
+  },
+  {
+    no: "Lot No. 2",
+    name: "Stephanie",
+    role: "Co-Owner & Estate Specialist",
+    photo: "/assets/stephanie.jpg",
+    bio: "Stephanie runs staging and sale days, turning full houses into welcoming sales backed by a loyal network of buyers.",
+  },
+];
+
+const specialties = [
+  "Antiques",
+  "Collectibles",
+  "Fine jewelry",
+  "Sports memorabilia",
+  "Art & prints",
+  "Silver & china",
+  "Vintage advertising",
+  "Furniture",
+];
 
 export default async function AboutPage() {
   await connection();
@@ -78,118 +121,157 @@ export default async function AboutPage() {
 
       <main>
         <header className={styles.hero} aria-labelledby="about-title">
-          <p className={styles.eyebrow}>About Us</p>
-          <h1 id="about-title">
-            Every Great Piece Has a <em>Provenance.</em> So Do We.
-          </h1>
-          <p className={styles.heroText}>
-            Big Shanty Auction is the auction venture of Big Shanty Antiques. This is how a
-            backroom auction became a destination.
-          </p>
+          <div className={styles.wrap}>
+            <div className={styles.frame}>
+              <i aria-hidden="true" />
+              <i aria-hidden="true" />
+              <i aria-hidden="true" />
+              <i aria-hidden="true" />
+              <span className={styles.eyebrow}>About Big Shanty</span>
+              <h1 id="about-title">
+                Every piece has a past.
+                <br />
+                <em>So do we.</em>
+              </h1>
+              <p className={styles.heroText}>
+                Two knowledgeable women, one Georgia company, and a lifelong respect for the
+                things people leave behind.
+              </p>
+            </div>
+          </div>
         </header>
 
-        <section className={styles.story} aria-labelledby="story-title">
-          <div className={styles.storyCopy}>
-            <p className={styles.eyebrow}>Who We Are</p>
-            <h2 id="story-title">
-              The Auction Venture of <em>Big Shanty Antiques</em>
-            </h2>
-            <p>
-              We started as a small auction company in the backroom of a big antique mall,
-              building a following of people who enjoyed the auctions and getting to know us.
-            </p>
-            <p>
-              Today, our auction space and warehouse each span more than 5,000 square feet.
-              We work closely with consignors and bidders to make every sale worth coming back for.
-            </p>
-          </div>
-          <aside className={styles.catalogue} aria-label="Big Shanty Auction at a glance">
-            <div className={styles.catalogueTop}>
-              <span>Catalogue Entry</span>
-              <span>Lot No. 1</span>
+        <section aria-label="Our story">
+          <div className={`${styles.wrap} ${styles.split}`}>
+            <div className={styles.def}>
+              <div>
+                <span className={styles.word}>
+                  provenance<small>noun &middot; /ˈprɒv.ə.nəns/</small>
+                </span>
+                <p>The record of where a thing has been and who has cared for it.</p>
+                <span className={styles.src}>The heart of our work</span>
+              </div>
             </div>
-            <h3>Big Shanty Auction</h3>
-            <p className={styles.location}>Marietta, Georgia</p>
-            <dl>
-              <dt>Origin</dt>
-              <dd>The backroom of an antique mall</dd>
-              <dt>Specialty</dt>
-              <dd>Antiques, collectibles, and estates</dd>
-              <dt>Space</dt>
-              <dd>5,000+ sq ft auction space and warehouse</dd>
-              <dt>Status</dt>
-              <dd>Still growing</dd>
-            </dl>
-            <span className={styles.seal} aria-hidden="true">Est. in<br />the<br />backroom</span>
-          </aside>
-        </section>
-
-        <section className={styles.storySection} aria-labelledby="chapters-title">
-          <div className={styles.sectionHeading}>
-            <p className={styles.eyebrow}>Provenance</p>
-            <h2 id="chapters-title">Chapters of <em>Our Story</em></h2>
-          </div>
-          <ol className={styles.timeline}>
-            {chapters.map(({ chapter, title, description }) => (
-              <li className={styles.chapter} key={chapter}>
-                <p className={styles.chapterLabel}>{chapter}</p>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className={styles.factsSection} aria-label="Big Shanty Auction facts">
-          <ul className={styles.facts}>
-            {facts.map(({ value, label }) => (
-              <li key={label}>
-                <strong>{value}</strong>
-                <span>{label}</span>
-              </li>
-            ))}
-          </ul>
-          <p className={styles.services}>Antique mall · Monthly auctions · Estate sales</p>
-        </section>
-
-        <section className={styles.missionSection} aria-label="Our mission and vision">
-          <article className={styles.principle}>
-            <p className={styles.chapterLabel}>i.</p>
-            <h2>Our Mission</h2>
-            <p>
-              To care for consignors’ items and give bidders the chance to find remarkable
-              pieces at a fair price.
-            </p>
-          </article>
-          <article className={styles.principle}>
-            <p className={styles.chapterLabel}>ii.</p>
-            <h2>Our Vision</h2>
-            <p>
-              To grow Big Shanty Antiques &amp; Auction into a leading antiques and auction
-              destination across the Southeast.
-            </p>
-          </article>
-        </section>
-
-        <section className={styles.contact} aria-labelledby="contact-title">
-          <p className={styles.eyebrow}>Be Part of the Story</p>
-          <h2 id="contact-title">
-            The next chapter could include <em>your collection.</em>
-          </h2>
-          <div className={styles.actions}>
-            <a className={styles.primaryButton} href="/contact">
-              Get in Touch
-            </a>
-            <a
-              className={styles.button}
-              href="https://bigshantyauction.hibid.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Bid Online
-            </a>
+            <div className={styles.story}>
+              <span className={`${styles.eyebrow} ${styles.blue}`}>Our Story</span>
+              <h2>We read the history in every room</h2>
+              <div className={styles.rule} />
+              <p>
+                In our business, a drawer is never just a drawer. It holds a signed program, a
+                strand of pearls, a tool someone kept for fifty years. Our job is to recognize
+                what each of those things is, what it is worth, and who will treasure it next.
+              </p>
+              <p>
+                Big Shanty Estate Sales is a Georgia company run by two of the most
+                knowledgeable women in the business. We handle the sorting, pricing and setup
+                ourselves, and we bring a large network of buyers to the door, so your family
+                gets a clear, professional sale without doing the heavy lifting.
+              </p>
+              <p>
+                The name comes from our corner of Georgia. Big Shanty is the name Kennesaw went
+                by in the 1800s, and we like carrying a little of that history with us.
+              </p>
+            </div>
           </div>
         </section>
+
+        <section className={styles.dark} aria-labelledby="family-title">
+          <div className={`${styles.wrap} ${styles.center}`}>
+            <span className={styles.eyebrow}>The Big Shanty Family</span>
+            <h2 id="family-title">Three ways we find a new home for your things</h2>
+            <div className={styles.rule} />
+            <div className={styles.tags}>
+              {tags.map((tag) => (
+                <div className={styles.tag} key={tag.no}>
+                  <small>{tag.no}</small>
+                  <h3>{tag.title}</h3>
+                  <p>{tag.text}</p>
+                  {tag.href ? (
+                    <a
+                      className={styles.price}
+                      href={tag.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {tag.price}
+                    </a>
+                  ) : (
+                    <span className={styles.price}>{tag.price}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="habits-title">
+          <div className={styles.wrap}>
+            <div className={styles.center}>
+              <span className={`${styles.eyebrow} ${styles.blue}`}>How We Work</span>
+              <h2 id="habits-title">Four habits behind every sale</h2>
+              <div className={styles.rule} />
+            </div>
+            <div className={styles.principles}>
+              {principles.map((item) => (
+                <div className={styles.principle} key={item.numeral}>
+                  <b aria-hidden="true">{item.numeral}</b>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.lots} aria-labelledby="team-title">
+          <div className={`${styles.wrap} ${styles.center}`}>
+            <span className={`${styles.eyebrow} ${styles.blue}`}>The Team</span>
+            <h2 id="team-title">Meet the two behind the key</h2>
+            <div className={styles.rule} />
+            <div className={styles.teamGrid}>
+              {team.map((member) => (
+                <div className={styles.lot} key={member.name}>
+                  <div>
+                    <Image
+                      className={styles.portrait}
+                      src={member.photo}
+                      width={320}
+                      height={320}
+                      alt={`Portrait of ${member.name}`}
+                    />
+                    <small>{member.no}</small>
+                    <h3>{member.name}</h3>
+                    <em>{member.role}</em>
+                    <p>{member.bio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.dark} aria-labelledby="skills-title">
+          <div className={`${styles.wrap} ${styles.center}`}>
+            <span className={styles.eyebrow}>What We Know</span>
+            <h2 id="skills-title">Trained eyes for the good stuff</h2>
+            <div className={styles.rule} />
+            <div className={styles.specialties}>
+              {specialties.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className={styles.cta}>
+          <div className={styles.wrap}>
+            <span className={styles.eyebrow}>Ready When You Are</span>
+            <h2>Let&rsquo;s see what your home is hiding</h2>
+            <a className={styles.ctaButton} href="/contact">
+              Request a Walk-Through
+            </a>
+          </div>
+        </div>
       </main>
 
       <SiteFooter />

@@ -13,7 +13,7 @@ export function SiteHeader({ currentPage }: { currentPage?: "Home" | "About" | "
   const anchor = (hash: string) => (onHome ? hash : `/${hash}`);
   const links = [
     { href: "/", label: "Home" },
-    { href: anchor("#about"), label: "About" },
+    { href: "/about", label: "About" },
     { href: anchor("#services"), label: "Services" },
     { href: "/contact", label: "Contact" },
   ];

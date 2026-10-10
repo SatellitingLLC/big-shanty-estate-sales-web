@@ -31,7 +31,7 @@ export function SiteFooter() {
           <div>
             <h2>Quick Menu</h2>
             <Link href="/">Home</Link>
-            <Link href="#about">About</Link>
+            <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
           </div>
           <div>
