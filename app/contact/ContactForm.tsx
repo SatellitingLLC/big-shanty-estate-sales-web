@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import styles from "./page.module.css";
 
@@ -18,6 +18,13 @@ export function ContactForm() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
   const [topic, setTopic] = useState<(typeof topics)[number]>("Estate sale");
+  const ticketRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!done) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    ticketRef.current?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+  }, [done]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -61,7 +68,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className={done ? `${styles.ticket} ${styles.done}` : styles.ticket}>
+    <div ref={ticketRef} className={done ? `${styles.ticket} ${styles.done}` : styles.ticket}>
       <div className={styles.inner}>
         <div className={styles.tophead}>
           <small>Admit One &middot; Free Consultation</small>

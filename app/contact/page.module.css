@@ -205,6 +205,7 @@
   border: 1px solid var(--gold);
   padding: 14px;
   box-shadow: 0 24px 50px rgba(8, 12, 20, 0.16);
+  scroll-margin-top: 100px;
 }
 
 .ticket::before,
@@ -378,6 +379,7 @@
   display: none;
   text-align: center;
   padding: 40px 10px;
+  overflow: clip;
 }
 
 .stampMark {
